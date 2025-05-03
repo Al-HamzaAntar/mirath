@@ -75,8 +75,12 @@
   }
 
   body {
-    @apply bg-islamic-light text-islamic-dark font-[Amiri,serif];
+    @apply bg-islamic-light text-islamic-dark font-[Amiri,serif] dark:bg-slate-900 dark:text-islamic-dark-dark;
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .dark body {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230d9488' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -94,19 +98,23 @@
     background-size: 50px 50px;
   }
   
+  .dark .islamic-pattern::before {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L0 50l50 50 50-50L50 0zm0 20l30 30-30 30-30-30 30-30z' fill='%230d9488' fill-opacity='0.4'/%3E%3C/svg%3E");
+  }
+  
   .arabic-text {
     @apply font-[Amiri,serif] text-right;
   }
 
   .verse-box {
-    @apply border border-islamic-secondary/30 rounded-md p-4 bg-islamic-light/50 my-4;
+    @apply border border-islamic-secondary/30 rounded-md p-4 bg-islamic-light/50 my-4 dark:border-islamic-dark-secondary/30 dark:bg-islamic-dark-light/50;
   }
 
   .heir-card {
-    @apply bg-white border border-islamic-primary/20 rounded-lg p-4 transition-all hover:shadow-md;
+    @apply bg-white border border-islamic-primary/20 rounded-lg p-4 transition-all hover:shadow-md dark:bg-slate-800 dark:border-islamic-dark-primary/20;
   }
 
   .result-share {
-    @apply font-bold text-islamic-primary;
+    @apply font-bold text-islamic-primary dark:text-islamic-dark-primary;
   }
 }

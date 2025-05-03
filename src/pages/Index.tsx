@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import Header from '@/components/Header';
@@ -47,7 +46,8 @@ const Index = () => {
       toast({
         title: "تنبيه بخصوص الوصية",
         description: "الوصية تتجاوز ثلث التركة، وهذا قد لا يكون مقبولاً شرعاً",
-        variant: "warning",
+        // Fixed warning variant to match allowed types
+        variant: "default",
       });
     }
 

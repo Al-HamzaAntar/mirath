@@ -68,7 +68,12 @@ export default {
 					secondary: '#F59E0B', // Amber/gold
 					accent: '#064E3B', // Dark green
 					light: '#ECFDF5', // Light green background
-					dark: '#0F172A' // Dark slate for text
+					dark: '#0F172A', // Dark slate for text
+					'dark-primary': '#0D9488', // Teal for dark mode primary
+					'dark-secondary': '#D97706', // Dark amber for dark mode
+					'dark-accent': '#059669', // Green accent for dark mode
+					'dark-light': '#134E4A', // Dark teal background
+					'dark-dark': '#E2E8F0' // Light text for dark mode
 				}
 			},
 			borderRadius: {

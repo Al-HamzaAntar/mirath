@@ -151,6 +151,7 @@ const EstateForm: React.FC<EstateFormProps> = ({
                 <SelectItem value="AED">AED</SelectItem>
                 <SelectItem value="EGP">EGP</SelectItem>
                 <SelectItem value="KWD">KWD</SelectItem>
+                <SelectItem value="YER">YER</SelectItem>
               </SelectContent>
             </Select>
           </div>
