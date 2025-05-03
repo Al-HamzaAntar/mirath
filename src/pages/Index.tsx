@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import Header from '@/components/Header';
@@ -5,6 +6,7 @@ import Footer from '@/components/Footer';
 import EstateForm from '@/components/EstateForm';
 import HeirsForm from '@/components/HeirsForm';
 import InheritanceResults from '@/components/InheritanceResults';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   Heir, 
   Estate, 
@@ -14,6 +16,7 @@ import {
 
 const Index = () => {
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   // Estate state
   const [totalAssets, setTotalAssets] = useState(1000000);
@@ -35,8 +38,8 @@ const Index = () => {
   const handleCalculateNetEstate = () => {
     if (totalAssets <= 0) {
       toast({
-        title: "خطأ في البيانات",
-        description: "يجب أن تكون قيمة الأصول أكبر من صفر",
+        title: t('toast.invalidAssets'),
+        description: t('toast.assetsError'),
         variant: "destructive",
       });
       return;
@@ -44,9 +47,8 @@ const Index = () => {
 
     if (bequests > totalAssets * (1/3)) {
       toast({
-        title: "تنبيه بخصوص الوصية",
-        description: "الوصية تتجاوز ثلث التركة، وهذا قد لا يكون مقبولاً شرعاً",
-        // Fixed warning variant to match allowed types
+        title: t('toast.bequestWarning'),
+        description: t('toast.bequestError'),
         variant: "default",
       });
     }
@@ -60,16 +62,16 @@ const Index = () => {
     });
 
     toast({
-      title: "تم حساب صافي التركة",
-      description: `صافي التركة: ${netEstate.toLocaleString()} ${currency}`,
+      title: t('toast.estateCalculated'),
+      description: `${t('toast.netEstateAmount')} ${netEstate.toLocaleString()} ${currency}`,
     });
   };
 
   const handleCalculateInheritance = () => {
     if (selectedHeirs.length === 0) {
       toast({
-        title: "لا يوجد ورثة",
-        description: "يرجى تحديد الورثة أولاً",
+        title: t('toast.noHeirs'),
+        description: t('toast.noHeirsError'),
         variant: "destructive",
       });
       return;
@@ -92,8 +94,8 @@ const Index = () => {
     setShowResults(true);
 
     toast({
-      title: "تم حساب الميراث",
-      description: "تم توزيع التركة وفق أحكام الشريعة الإسلامية",
+      title: t('toast.inheritanceCalculated'),
+      description: t('toast.inheritanceDescription'),
     });
     
     // Scroll to results
@@ -112,7 +114,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen" dir="rtl">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-6">
         <Header />
         

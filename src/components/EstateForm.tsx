@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface EstateFormProps {
   totalAssets: number;
@@ -33,6 +34,8 @@ const EstateForm: React.FC<EstateFormProps> = ({
   setCurrency,
   onCalculateNetEstate
 }) => {
+  const { t, language } = useLanguage();
+  
   return (
     <Card className="mb-6 shadow-sm border-islamic-primary/20">
       <CardHeader className="bg-gradient-to-r from-islamic-primary/5 to-islamic-secondary/5 border-b border-islamic-primary/10">
@@ -41,7 +44,7 @@ const EstateForm: React.FC<EstateFormProps> = ({
             <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
             <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd"></path>
           </svg>
-          بيانات التركة
+          {t('estate.title')}
         </CardTitle>
       </CardHeader>
       <CardContent className="pt-6">
@@ -49,7 +52,7 @@ const EstateForm: React.FC<EstateFormProps> = ({
           <div className="space-y-3">
             <div className="flex justify-between">
               <Label htmlFor="totalAssets" className="text-islamic-dark self-center">
-                إجمالي الأصول
+                {t('estate.totalAssets')}
               </Label>
               <div className="w-2/3">
                 <div className="relative">
@@ -70,7 +73,7 @@ const EstateForm: React.FC<EstateFormProps> = ({
             
             <div className="flex justify-between">
               <Label htmlFor="totalDebts" className="text-islamic-dark self-center">
-                إجمالي الديون
+                {t('estate.totalDebts')}
               </Label>
               <div className="w-2/3">
                 <div className="relative">
@@ -93,7 +96,7 @@ const EstateForm: React.FC<EstateFormProps> = ({
           <div className="space-y-3">
             <div className="flex justify-between">
               <Label htmlFor="funeralExpenses" className="text-islamic-dark self-center">
-                مصاريف الجنازة
+                {t('estate.funeralExpenses')}
               </Label>
               <div className="w-2/3">
                 <div className="relative">
@@ -114,7 +117,7 @@ const EstateForm: React.FC<EstateFormProps> = ({
             
             <div className="flex justify-between">
               <Label htmlFor="bequests" className="text-islamic-dark self-center">
-                الوصية (حتى 1/3)
+                {t('estate.bequests')}
               </Label>
               <div className="w-2/3">
                 <div className="relative">
@@ -138,7 +141,7 @@ const EstateForm: React.FC<EstateFormProps> = ({
         <div className="flex justify-between items-center mt-8">
           <div className="flex items-center space-x-2 rtl:space-x-reverse">
             <Label htmlFor="currency" className="text-islamic-dark whitespace-nowrap">
-              العملة:
+              {t('estate.currency')}
             </Label>
             <Select value={currency} onValueChange={setCurrency}>
               <SelectTrigger className="w-20 border-islamic-primary/30">
@@ -160,19 +163,19 @@ const EstateForm: React.FC<EstateFormProps> = ({
             onClick={onCalculateNetEstate}
             className="bg-islamic-primary hover:bg-islamic-accent text-white"
           >
-            حساب صافي التركة
+            {t('estate.calculate')}
           </Button>
         </div>
 
         <div className="mt-6 pt-4 border-t border-dashed border-islamic-primary/30">
           <div className="flex justify-between text-lg font-bold">
-            <span className="text-islamic-dark">صافي التركة للتوزيع:</span>
+            <span className="text-islamic-dark">{t('estate.netEstate')}</span>
             <span className="text-islamic-primary">
               {(totalAssets - totalDebts - funeralExpenses - bequests).toLocaleString()} {currency}
             </span>
           </div>
           <div className="text-xs text-islamic-dark/70 mt-2 text-right">
-            صافي التركة = إجمالي الأصول - الديون - مصاريف الجنازة - الوصية
+            {t('estate.netEstateFormula')}
           </div>
         </div>
       </CardContent>
